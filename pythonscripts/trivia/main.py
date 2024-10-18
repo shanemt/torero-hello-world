@@ -16,7 +16,7 @@ def main():
     parser = argparse.ArgumentParser(description="Send a message to ChatGPT API and get a response")
     parser.add_argument("--message", required=True, help="The message to send to ChatGPT")
     parser.add_argument("--system_prompt", help="Filename of the system prompt in ./prompts/ directory", default="trivia.txt")
-    parser.add_argument("--openapi_api_key", help="Filename of the system prompt in ./prompts/ directory")
+    parser.add_argument("--openai_api_key", help="API Key for ChatGPT")
     args = parser.parse_args()
 
     api_key = os.environ.get("OPENAI_API_KEY")
