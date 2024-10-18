@@ -13,19 +13,18 @@ def read_system_prompt(prompt_file):
         return None
 
 def main():
-    for key, value in os.environ.items():
-        if key.startswith("TORERO_"):
-            print(f"{key}: {value}")
-
     parser = argparse.ArgumentParser(description="Send a message to ChatGPT API and get a response")
     parser.add_argument("--message", required=True, help="The message to send to ChatGPT")
     parser.add_argument("--system_prompt", help="Filename of the system prompt in ./prompts/ directory", default="trivia.txt")
+    parser.add_argument("--openapi_api_key", help="Filename of the system prompt in ./prompts/ directory")
     args = parser.parse_args()
 
     api_key = os.environ.get("OPENAI_API_KEY")
     if not api_key:
-        print("Error: OPENAI_API_KEY environment variable is not set")
-        return
+        api_key = args.open_api_key
+        if not api_key:
+            print("Error: OPENAI_API_KEY environment variable or argument is not set")
+            return
 
     system_prompt = read_system_prompt(args.system_prompt)
     if system_prompt is None:
