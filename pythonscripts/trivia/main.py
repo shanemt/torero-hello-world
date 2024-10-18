@@ -21,7 +21,7 @@ def main():
 
     api_key = os.environ.get("OPENAI_API_KEY")
     if not api_key:
-        api_key = args.openapi_api_key
+        api_key = args.openai_api_key
         if not api_key:
             print("Error: OPENAI_API_KEY environment variable or argument is not set")
             return
